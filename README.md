@@ -72,7 +72,7 @@ PORT=3000
 DATABASE_URL=postgresql://postgres:your_password@localhost:5432/bookstore_db
 JWT_SECRET=your_jwt_secret
 ```
-
+If you are using docker dont forget to change the environmental variables on the dockerfile.
 ### Database Setup
 
 This project uses Docker for PostgreSQL. Run the following commands to set up and start the database:
