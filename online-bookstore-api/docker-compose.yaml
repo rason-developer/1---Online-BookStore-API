@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: password123
+      POSTGRES_USER: user123
+      POSTGRES_DB: bookstore
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  app:
+    image: online-bookstore-api
+    ports:
+      - "3000:3000"
+    environment:
+      DB_USER: user123
+      DB_PASSWORD: password123
+      DB_NAME: bookstore
+      DB_PORT: 5432
+      NODE_ENV: "dev"
+      DB_HOST: db
+      PORT: 3000
+      JWT_SECRET: "Secret123"
+    build: .
+
+volumes:
+  pgdata:

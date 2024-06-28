@@ -1,0 +1,156 @@
+###
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+    "username":"john2", "email":"john2@test.com", "password":"test1234"
+}
+
+###
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+    "email":"john2@test.com", "password": "test1234"
+}
+
+
+###
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+    "email":"admin@bookstore.api", "password": "admin2001"
+}
+
+###
+
+
+### Get All Books
+GET http://localhost:3000/api/books
+
+### Get Book by ID
+GET http://localhost:3000/api/books/1
+
+### Create Book (Admin Only)
+POST http://localhost:3000/api/books
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzE5NjA5NDcyLCJleHAiOjE3MTk2MTMwNzJ9.WK8MXluqEFCZ8vHgbMpeO5MiFH_0L5r5KVFtZvkdi-M
+
+{
+    "title": "Sample Book",
+    "author": "Author Name",
+    "genre": "Fiction",
+    "price": 19.99,
+    "stockQuantity": 10,
+    "description": "A description of the sample book."
+}
+
+### Update Book (Admin Only)
+PUT http://localhost:3000/api/books/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzE5NjA1NDg3LCJleHAiOjE3MTk2MDkwODd9.DSaFcxmGW5xreBVsGACWeWR1teOGajLQxULA70cLM3M
+
+{
+    "title": "Updated Sample Book",
+    "author": "Updated Author Name",
+    "genre": "Non-Fiction",
+    "price": 24.99,
+    "stockQuantity": 5,
+    "description": "An updated description of the sample book."
+}
+
+### Delete Book (Admin Only)
+DELETE http://localhost:3000/api/books/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzE5NjA1NDg3LCJleHAiOjE3MTk2MDkwODd9.DSaFcxmGW5xreBVsGACWeWR1teOGajLQxULA70cLM3M
+
+
+### Place Order
+POST http://localhost:3000/api/orders
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6InVzZXIiLCJpYXQiOjE3MTk2MDk5ODcsImV4cCI6MTcxOTYxMzU4N30.GJGUR62WXlK4-2TRAG2pG4u-RQFw3OTy75hBgjYx_aU
+
+{
+    "items": [
+        {
+            "bookId": 2,
+            "quantity": 2,
+            "price": 19.99
+        },
+        {
+            "bookId": 3,
+            "quantity": 1,
+            "price": 9.99
+        }
+    ],
+    "totalAmount": 49.97
+}
+
+### Get User Orders
+GET http://localhost:3000/api/orders
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6InVzZXIiLCJpYXQiOjE3MTk2MDk5ODcsImV4cCI6MTcxOTYxMzU4N30.GJGUR62WXlK4-2TRAG2pG4u-RQFw3OTy75hBgjYx_aU
+
+### Get Order by ID
+GET http://localhost:3000/api/orders/6
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6InVzZXIiLCJpYXQiOjE3MTk2MDk5ODcsImV4cCI6MTcxOTYxMzU4N30.GJGUR62WXlK4-2TRAG2pG4u-RQFw3OTy75hBgjYx_aU
+
+
+### Get Cart of User by ID
+GET http://localhost:3000/api/cart
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6InVzZXIiLCJpYXQiOjE3MTk2MTQ2MDAsImV4cCI6MTcxOTYxODIwMH0.PLJ8Lu9_f9qFY7JPhlXA01er561pbkAHAHHHRuLDFss
+
+###
+POST http://localhost:3000/api/cart
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6InVzZXIiLCJpYXQiOjE3MTk2MTQyNzAsImV4cCI6MTcxOTYxNzg3MH0.9YogbrVZpt5BxQKI6FUDV0ldpHfPabDM-XUS7R7rpJA
+Content-Type: application/json
+
+{
+    "bookId": 2,
+    "quantity": 3
+}
+
+###
+
+###
+PUT http://localhost:3000/api/cart/4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6InVzZXIiLCJpYXQiOjE3MTk2MTQ2MDAsImV4cCI6MTcxOTYxODIwMH0.PLJ8Lu9_f9qFY7JPhlXA01er561pbkAHAHHHRuLDFss
+Content-Type: application/json
+
+{
+    "quantity": 5
+}
+
+###
+
+###
+DELETE http://localhost:3000/api/cart/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6InVzZXIiLCJpYXQiOjE3MTk2MTQyNzAsImV4cCI6MTcxOTYxNzg3MH0.9YogbrVZpt5BxQKI6FUDV0ldpHfPabDM-XUS7R7rpJA
+
+###
+
+
+### Get all orders
+GET http://localhost:3000/api/admin/orders
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzE5NjE2NjI0LCJleHAiOjE3MTk2MjAyMjR9.0IfUoJ0vL6sJ31xL4G4s8qd8XUzjgfgOCIlfGHyaVVU
+
+###
+
+
+### Update order status
+PUT http://localhost:3000/api/admin/orders/7
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzE5NjE2NjI0LCJleHAiOjE3MTk2MjAyMjR9.0IfUoJ0vL6sJ31xL4G4s8qd8XUzjgfgOCIlfGHyaVVU
+
+{
+  "status": "pending"
+}
+
+###
+
+### Get order items for a specific order
+GET http://localhost:3000/api/admin/orders/7/items
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzE5NjE2NjI0LCJleHAiOjE3MTk2MjAyMjR9.0IfUoJ0vL6sJ31xL4G4s8qd8XUzjgfgOCIlfGHyaVVU
+
+
+###
+
